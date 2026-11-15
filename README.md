@@ -1,27 +1,29 @@
-<a id="top"></a>
+<p align="center"><sub>Network Sentinel</sub></p>
 
-<p align="center"><img src="assets/banner.svg" alt="Network Sentinel" width="100%"></p>
+---
 
 <p align="center">
-<img alt="Python" src="https://img.shields.io/badge/Python-3.10+-06B6D4?style=for-the-badge&logo=python&logoColor=white">
-<img alt="Scapy" src="https://img.shields.io/badge/Scapy-2.5+-242424?style=for-the-badge">
-<img alt="IDS" src="https://img.shields.io/badge/blue%20team-IDS-242424?style=for-the-badge">
-<a href="https://github.com/arthurlynow098/network-sentinel/actions/workflows/testes.yml"><img alt="Testes" src="https://img.shields.io/github/actions/workflow/status/arthurlynow098/network-sentinel/testes.yml?style=for-the-badge&label=testes&color=242424"></a>
+  <img src="assets/banner.png" alt="Network Sentinel" width="100%">
 </p>
 
-<p align="center"><a href="#sobre">Sobre</a> &nbsp;&nbsp; <a href="#como-funciona">Como funciona</a> &nbsp;&nbsp; <a href="#rodando">Rodando</a> &nbsp;&nbsp; <a href="#aprendi">O que aprendi</a> &nbsp;&nbsp; <a href="#estudos">Estudos</a></p>
+<p align="center">
+  Mini IDS com Scapy que detecta port scan, ARP spoofing e ICMP flood em pcap ou ao vivo
+</p>
 
-<a id="sobre"></a>
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.10+-06B6D4?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="Scapy" src="https://img.shields.io/badge/Scapy-2.5+-242424?style=for-the-badge">
+  <img alt="IDS" src="https://img.shields.io/badge/blue%20team-IDS-242424?style=for-the-badge">
+  <a href="https://github.com/arthurlynow098/network-sentinel/actions/workflows/testes.yml"><img alt="Testes" src="https://img.shields.io/github/actions/workflow/status/arthurlynow098/network-sentinel/testes.yml?style=for-the-badge&label=testes&color=242424"></a>
+</p>
 
-<p><img src="assets/secao-01.svg" alt="Sobre o projeto" width="100%"></p>
+## Sobre o projeto
 
 Depois de estudar Wireshark eu fiquei com uma pergunta na cabeça. Se eu consigo **ver** uma varredura de portas olhando os pacotes, dá para escrever um programa que **perceba sozinho**? É isso que um IDS como Snort ou Suricata faz.
 
 O Network Sentinel é um IDS pequeno, feito com Scapy. Ele lê um arquivo `.pcap` (ou escuta a rede ao vivo) e aplica três regras de detecção. O projeto acompanha um `.pcap` de laboratório com tráfego normal misturado com três ataques, para dar para testar sem precisar atacar nada.
 
-<a id="como-funciona"></a>
-
-<p><img src="assets/secao-02.svg" alt="Como funciona" width="100%"></p>
+## Como funciona
 
 ```mermaid
 flowchart LR
@@ -33,22 +35,15 @@ flowchart LR
     C & D & E --> G[Alertas com MITRE ATT&CK]
 ```
 
-| Detector | Lógica | MITRE |
-|---|---|---|
-| **Port scan** | O mesmo IP manda SYN (sem ACK) para 15 portas diferentes de um alvo em 10 segundos | T1046 |
-| **ARP spoofing** | Uma resposta ARP diz que um IP conhecido agora tem outro MAC. É assim que começa um man-in-the-middle na rede local | T1557.002 |
-| **ICMP flood** | Mais de 50 pings do mesmo IP dentro de 1 segundo | T1498 |
+## Tecnologias
 
-Decisões que valem comentar
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white">
+  <img alt="Scapy" src="https://img.shields.io/badge/Scapy-2B2B2B?style=flat-square">
+  <img alt="MITRE ATT&CK" src="https://img.shields.io/badge/MITRE_ATT%26CK-2B2B2B?style=flat-square">
+</p>
 
-- **O tempo vem do pacote, não do relógio.** Por isso o mesmo código serve para captura ao vivo e para analisar um `.pcap` de dias atrás.
-- **Janela deslizante.** Uma varredura lenta, de uma porta a cada minuto, não dispara. Isso é proposital e está documentado como limitação, porque é exatamente o que um atacante mais cuidadoso faria.
-- **SYN-ACK não conta.** Só o primeiro passo do handshake indica quem está iniciando conexões, senão o servidor respondendo viraria "atacante".
-- **Cada detector é uma classe com `feed`.** Para criar uma regra nova basta escrever outra classe e colocar na lista.
-
-<a id="rodando"></a>
-
-<p><img src="assets/secao-03.svg" alt="Rodando na sua máquina" width="100%"></p>
+## Executando o código
 
 ```bash
 git clone https://github.com/arthurlynow098/network-sentinel.git
@@ -74,7 +69,7 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-<p><img src="assets/secao-04.svg" alt="Exemplo de saída" width="100%"></p>
+## Exemplo
 
 ```text
   lendo exemplos/laboratorio.pcap
@@ -93,25 +88,7 @@ python -m pytest -q
   3 alerta(s)
 ```
 
-<a id="aprendi"></a>
-
-<p><img src="assets/secao-05.svg" alt="O que eu aprendi" width="100%"></p>
-
-- Como as camadas Ethernet, IP e TCP aparecem dentro de um pacote e como acessar cada uma no Scapy
-- As flags TCP (SYN, ACK, RST) e o que cada combinação significa
-- Por que o ARP é tão fácil de enganar e como isso vira man-in-the-middle
-- Montar tráfego sintético para testar detecção sem depender de ataque real
-- A diferença entre um IDS por assinatura e um por comportamento
-
-Limitações e próximos passos
-
-- [ ] Detectar varredura lenta guardando histórico mais longo
-- [ ] Ler regras de um arquivo YAML em vez de deixar no código
-- [ ] Exportar alertas no formato EVE JSON do Suricata para jogar num SIEM
-
-<a id="estudos"></a>
-
-<p><img src="assets/secao-06.svg" alt="Estudei por aqui" width="100%"></p>
+## Estudei por aqui
 
 Segui essas aulas e materiais para entender e aplicar tudo que está aqui.
 
@@ -123,6 +100,8 @@ Segui essas aulas e materiais para entender e aplicar tudo que está aqui.
 | [MITRE ATT&CK T1557.002, ARP Cache Poisoning](https://attack.mitre.org/techniques/T1557/002/) | Como o ataque funciona e como detectar |
 | [MITRE ATT&CK T1046, Network Service Discovery](https://attack.mitre.org/techniques/T1046/) | O lado de quem defende de uma varredura |
 
-<p align="center"><sub>Parte do <a href="https://github.com/arthurlynow098">Lince Lab</a>, minha coleção de projetos de cibersegurança</sub></p>
+## Licença
 
-<p align="center"><a href="#top">Voltar ao topo</a></p>
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).
+
+<p align="center"><sub>A gravura do banner é o falcão-peregrino de John Gould, de 1837, em domínio público no <a href="https://commons.wikimedia.org/wiki/File%3AThe_birds_of_Europe_%289401303060%29.jpg">Wikimedia Commons</a>.</sub></p>
