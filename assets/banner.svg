@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="460" viewBox="0 0 1400 460">
+<defs><pattern id="h1" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#0b0b0b" stroke-width="2.2"/></pattern><pattern id="h2" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><line x1="0" y1="0" x2="0" y2="5" stroke="#0b0b0b" stroke-width="1.6"/></pattern><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#f5f1e6" opacity=".09"/></pattern><pattern id="tilehatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#0b0b0b" stroke-width="1" opacity=".18"/></pattern></defs>
+<rect width="1400" height="460" rx="22" fill="#0b0b0b"/>
+<rect width="1400" height="460" rx="22" fill="url(#dots)"/>
+<rect x="70" y="70" width="320" height="320" rx="44" fill="#06B6D4"/>
+<rect x="70" y="70" width="320" height="320" rx="44" fill="url(#tilehatch)"/>
+<g transform="translate(80 80)"><path d="M25 130 C80 50 220 50 275 130 C220 210 80 210 25 130 Z" fill="#f5f1e6" stroke="#0b0b0b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="150" cy="130" r="52" fill="url(#h1)" stroke="#0b0b0b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="150" cy="130" r="22" fill="#0b0b0b"/><circle cx="160" cy="120" r="7" fill="#f5f1e6"/><path d="M40 235 L51 257 L62 235 L73 213 L84 235 L95 257 L106 235 L117 213 L128 235 L139 257 L150 235 L161 213 L172 235 L183 257 L194 235 L205 213 L216 235 L227 257 L238 235 L249 213 L260 235" fill="none" stroke="#0b0b0b" stroke-width="5" stroke-linejoin="round"/></g>
+<text x="1330" y="92" text-anchor="end" font-family="'Cascadia Code','JetBrains Mono',Consolas,'Courier New',monospace" font-size="20" letter-spacing="3" fill="#8a867c">LINCE LAB / CIBER 08</text>
+<text x="450" y="258" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="77" letter-spacing="-2"><tspan fill="#f5f1e6">Network</tspan><tspan fill="#06B6D4">Sentinel</tspan></text>
+<text x="454" y="318" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#f5f1e6" opacity=".86">Mini IDS com Scapy para port scan, ARP spoof e flood</text>
+<rect x="454" y="352" width="60" height="5" rx="2" fill="#06B6D4"/>
+<text x="530" y="362" font-family="'Cascadia Code','JetBrains Mono',Consolas,'Courier New',monospace" font-size="20" fill="#8a867c">$ python -m sentinel --pcap captura.pcap</text>
+</svg>
