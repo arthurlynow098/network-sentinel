@@ -1,6 +1,6 @@
 <a id="top"></a>
 
-<p align="center"><img src="assets/banner.svg" alt="Network Sentinel" width="100%"></p>
+<p align="center"><img src="assets/banner.png" alt="Network Sentinel" width="100%"></p>
 
 <p align="center">
 <img alt="Python" src="https://img.shields.io/badge/Python-3.10+-06B6D4?style=for-the-badge&logo=python&logoColor=white">
@@ -13,7 +13,7 @@
 
 <a id="sobre"></a>
 
-<p><img src="assets/secao-01.svg" alt="Sobre o projeto" width="100%"></p>
+<p><img src="assets/secao-01.png" alt="Sobre o projeto" width="100%"></p>
 
 Depois de estudar Wireshark eu fiquei com uma pergunta na cabeça. Se eu consigo **ver** uma varredura de portas olhando os pacotes, dá para escrever um programa que **perceba sozinho**? É isso que um IDS como Snort ou Suricata faz.
 
@@ -21,7 +21,7 @@ O Network Sentinel é um IDS pequeno, feito com Scapy. Ele lê um arquivo `.pcap
 
 <a id="como-funciona"></a>
 
-<p><img src="assets/secao-02.svg" alt="Como funciona" width="100%"></p>
+<p><img src="assets/secao-02.png" alt="Como funciona" width="100%"></p>
 
 ```mermaid
 flowchart LR
@@ -48,7 +48,7 @@ Decisões que valem comentar
 
 <a id="rodando"></a>
 
-<p><img src="assets/secao-03.svg" alt="Rodando na sua máquina" width="100%"></p>
+<p><img src="assets/secao-03.png" alt="Rodando na sua máquina" width="100%"></p>
 
 ```bash
 git clone https://github.com/arthurlynow098/network-sentinel.git
@@ -74,7 +74,7 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-<p><img src="assets/secao-04.svg" alt="Exemplo de saída" width="100%"></p>
+<p><img src="assets/secao-04.png" alt="Exemplo de saída" width="100%"></p>
 
 ```text
   lendo exemplos/laboratorio.pcap
@@ -95,7 +95,7 @@ python -m pytest -q
 
 <a id="aprendi"></a>
 
-<p><img src="assets/secao-05.svg" alt="O que eu aprendi" width="100%"></p>
+<p><img src="assets/secao-05.png" alt="O que eu aprendi" width="100%"></p>
 
 - Como as camadas Ethernet, IP e TCP aparecem dentro de um pacote e como acessar cada uma no Scapy
 - As flags TCP (SYN, ACK, RST) e o que cada combinação significa
@@ -111,7 +111,7 @@ Limitações e próximos passos
 
 <a id="estudos"></a>
 
-<p><img src="assets/secao-06.svg" alt="Estudei por aqui" width="100%"></p>
+<p><img src="assets/secao-06.png" alt="Estudei por aqui" width="100%"></p>
 
 Segui essas aulas e materiais para entender e aplicar tudo que está aqui.
 
